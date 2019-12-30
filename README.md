@@ -1,4 +1,4 @@
-# FrontArtisan React
+# React Frontend SDK
 Frontend starter kit for react development.
 
 ## Main Dependendencies
