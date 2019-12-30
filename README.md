@@ -31,6 +31,9 @@ For start with this project you only need the [NodeJS and npm](https://nodejs.or
 
 If you want a npm alternative, use [Yarn](https://yarnpkg.com).
 
+### Server to Data Fetching
+This project make requests to [Stats-API](http://gitlab.iesde.com.br/desenvolvimento/stats-api), locally, clone and run this project.
+
 ## Installing / Getting started
 This projec use [CRA](https://github.com/facebook/create-react-app) for basic configuration.
 
