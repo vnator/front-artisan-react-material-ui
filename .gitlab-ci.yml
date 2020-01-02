@@ -68,8 +68,7 @@ build:
   script: *build
   artifacts:
     paths:
-      - dist/
-      - node_modules/
+      - build/
   only:
     refs:
       - develop
@@ -84,8 +83,7 @@ deploy:release:
     - echo "deploy realeses or hotfix"
   artifacts:
     paths:
-      - dist/
-      - node_modules/
+      - build/
   only:
     variables:
       - $CI_COMMIT_REF_NAME =~ /^release\//
@@ -97,8 +95,7 @@ deploy:production:
     - echo "deplou to production"
   artifacts:
     paths:
-      - dist/
-      - node_modules/
+      - build/
   when: manual
   only:
     - master
