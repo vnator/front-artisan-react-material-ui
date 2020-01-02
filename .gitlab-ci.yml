@@ -5,7 +5,7 @@ variables:
    S3_KEY: $S3_KEY
    CLOUD_FRONT_DIST_ID: $CLOUD_FRONT_DIST_ID
    CLOUD_FRONT_PATH: $CLOUD_FRONT_PATH
-
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 # Scripts
 ## Compandos para serem reaproveitados nos jobs 
@@ -22,13 +22,24 @@ variables:
 .build: &build
   - yarn build
 
+# Cache Modules
+cache: &global_cache
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .cache/pip
+      - venv/
+    policy: pull-push
+
+
 # Stages:
 ## sao utilizados para definir ambientes onde jobs unicos devem ser rodados, tendo em vista as diferencas entre si, por exemplo:
 ## dev e prod, sendo que em desenvolvimento validamos os processos comuns e montamos ambiente para testes de integracao. Em producao
 ## apos todas as validacoes fazemos o deploy, enviamos para o bucket destino e limpamos o cache do cloudfront com create invalidate.
 stages:
   - prepare
-  - test_qa
+  - code_quality
+  - test
   - build    
   - deploy
 
@@ -36,26 +47,26 @@ cache:
    untracked: true
    policy: pull
 
-
 default:
   image:
     name: node
   stage: prepare
-  script: echo "init ci proccess"
-  before_script: *install
+  script: *install
 
 # Jobs
 ## Fluxo de trabalho principal para rodar instrucoes 
 lint:
   image:
     name: node
-  stage: test_qa
+    - code_quality
+  stage: test
   script: *lint
 
 # Register Docker Runner
 ## regustrar imagem doker do Docker Hub
 test:
-  stage: test_qa
+- test
+  stage: test
   script: *test
   only:
     - develop
