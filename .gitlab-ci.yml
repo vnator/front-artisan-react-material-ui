@@ -61,11 +61,11 @@ lint:
 test:
   stage: test
   script:
-    - echo $CI_COMMIT_BRANCH
     - *test
+    - "echo $CI_COMMIT_BRANCH"
   only:
     variables:
-      - $CI_COMMIT_BRANCH =~ /^feature\/*/
+      - $CI_COMMIT_BRANCH =~ /^feature\//
 
 build:
   stage: build
