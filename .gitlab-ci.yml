@@ -69,8 +69,9 @@ build:
   artifacts:
     paths:
       - build/
-  rules:
-    if: $CI_COMMIT_REF_NAME =~ /^release\// || $CI_COMMIT_REF_NAME =~ /^hotfix\// || $CI_COMMIT_REF_NAME == "master" || $CI_COMMIT_REF_NAME == "develop"
+  only:
+    variables:
+      - $CI_COMMIT_REF_NAME =~ /^release\// || $CI_COMMIT_REF_NAME == "develop"
 
 deploy:release:
   stage: deploy
