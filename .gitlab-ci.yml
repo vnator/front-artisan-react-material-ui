@@ -17,6 +17,7 @@ variables:
   - yarn run lint:js
   
 .test: &test
+  - echo $CI_COMMIT_BRANCH
   - yarn test:ci
 
 .build: &build
@@ -60,9 +61,7 @@ lint:
 ## regustrar imagem doker do Docker Hub
 test:
   stage: test
-  script:
-    - *test
-    - "echo $CI_COMMIT_BRANCH"
+  script: *test
   only:
     variables:
       - $CI_COMMIT_BRANCH =~ /^feature\//
