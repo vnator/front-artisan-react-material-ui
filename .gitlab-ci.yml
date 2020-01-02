@@ -60,7 +60,9 @@ lint:
 ## regustrar imagem doker do Docker Hub
 test:
   stage: test
-  script: *test
+  script:
+    - echo $CI_COMMIT_BRANCH
+    - *test
   only:
     variables:
       - $CI_COMMIT_BRANCH =~ /^feature\/*/
