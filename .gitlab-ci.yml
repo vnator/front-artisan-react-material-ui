@@ -5,7 +5,7 @@ variables:
    S3_KEY: $S3_KEY
    CLOUD_FRONT_DIST_ID: $CLOUD_FRONT_DIST_ID
    CLOUD_FRONT_PATH: $CLOUD_FRONT_PATH
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 # Scripts
 ## Compandos para serem reaproveitados nos jobs 
@@ -59,14 +59,12 @@ default:
 lint:
   image:
     name: node
-    - code_quality
-  stage: test
+  stage: code_quality
   script: *lint
 
 # Register Docker Runner
 ## regustrar imagem doker do Docker Hub
 test:
-- test
   stage: test
   script: *test
   only:
