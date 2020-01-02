@@ -62,12 +62,8 @@ test:
   stage: test
   script: *test
   only:
-    changes:
-      - develop
-      - master
-      - hotfix/*
-      - release/*
-      - feature/*
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^feature\/*/
 
 build:
   stage: build
@@ -102,6 +98,7 @@ deploy:production:
     paths:
       - dist/
       - node_modules/
+  when: manual
   only:
     - master
     
