@@ -9,7 +9,9 @@ variables:
    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 # Scripts
-## Compandos para serem reaproveitados nos jobs 
+## Compandos para serem reaproveitados nos jobs
+image: node
+
 .install: &install
   - yarn
 
@@ -46,16 +48,12 @@ cache:
   policy: pull-push
 
 default:
-  image:
-    name: node
   stage: prepare
   script: *install
 
 # Jobs
 ## Fluxo de trabalho principal para rodar instrucoes 
 lint:
-  image:
-    name: node
   stage: code_quality
   script: *lint
 
@@ -63,8 +61,6 @@ lint:
 ## regustrar imagem doker do Docker Hub
 test:
   stage: test
-  image:
-    name: node
   script: *test
   only:
     variables:
@@ -92,8 +88,9 @@ deploy:release:
       - dist/
       - node_modules/
   only:
-    - hotfix/*
-    - release/*
+    variables:
+      - $CI_COMMIT_REF_NAME =~ /^release\//
+      - $CI_COMMIT_REF_NAME =~ /^hotfix\//
 
 deploy:production:
   stage: deploy 
