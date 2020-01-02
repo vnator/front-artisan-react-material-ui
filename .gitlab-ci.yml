@@ -22,17 +22,6 @@ variables:
 .build: &build
   - yarn build
 
-# Cache Modules
-cache:
-  untracked: true
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .cache/pip
-    - venv/
-  policy: pull-push
-
-
 # Stages:
 ## sao utilizados para definir ambientes onde jobs unicos devem ser rodados, tendo em vista as diferencas entre si, por exemplo:
 ## dev e prod, sendo que em desenvolvimento validamos os processos comuns e montamos ambiente para testes de integracao. Em producao
@@ -45,8 +34,13 @@ stages:
   - deploy
 
 cache:
-   untracked: true
-   policy: pull
+  untracked: true
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .cache/pip
+    - venv/
+  policy: pull-push
 
 default:
   image:
