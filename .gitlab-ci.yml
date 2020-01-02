@@ -51,11 +51,11 @@ install:
   stage: prepare
   script: *install
 
-lint:css:
+lint:style:
   stage: code_quality
   script: *lint_css
 
-lint:js:
+lint:script:
   stage: code_quality
   script: *lint_js
 
@@ -71,10 +71,12 @@ build:
       - dist/
       - node_modules/
   only:
-    - develop
-    - master
-    - hotfix/*
-    - release/*
+    refs:
+      - develop
+      - master
+    variables:
+      - $CI_COMMIT_REF_NAME =~ /^release\//
+      - $CI_COMMIT_REF_NAME =~ /^hotfix\//
 
 deploy:release:
   stage: deploy
