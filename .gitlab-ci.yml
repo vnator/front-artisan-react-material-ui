@@ -23,13 +23,14 @@ variables:
   - yarn build
 
 # Cache Modules
-cache: &global_cache
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - .cache/pip
-      - venv/
-    policy: pull-push
+cache:
+  untracked: true
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .cache/pip
+    - venv/
+  policy: pull-push
 
 
 # Stages:
