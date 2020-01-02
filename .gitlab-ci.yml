@@ -15,10 +15,10 @@ image: node
 .install: &install
   - yarn
 
-.lint:css: &lint:css
+.lint_css: &lint_css
   - yarn run lint:css
 
-.lint:js: &lint:js
+.lint_js: &lint_js
   - yarn run lint:js
   
 .test: &test
@@ -47,28 +47,21 @@ cache:
     - venv/
   policy: pull-push
 
-default:
+install:
   stage: prepare
   script: *install
 
-# Jobs
-## Fluxo de trabalho principal para rodar instrucoes 
 lint:css:
   stage: code_quality
-  script: *lint:css
+  script: *lint_css
 
 lint:js:
   stage: code_quality
-  script: *lint:js
+  script: *lint_js
 
-# Register Docker Runner
-## regustrar imagem doker do Docker Hub
-test:
+unity_test:
   stage: test
   script: *test
-  only:
-    variables:
-      - $CI_COMMIT_REF_NAME =~ /^feature\//
 
 build:
   stage: build
