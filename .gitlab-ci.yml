@@ -15,11 +15,11 @@ image: node
 .install: &install
   - yarn
 
-.lint: &lint
+.lint:css: &lint:css
   - yarn run lint:css
+
+.lint:js: &lint:js
   - yarn run lint:js
-  - echo $CARAMBOLAS
-  - echo $CI_COMMIT_REF_NAME
   
 .test: &test
   - yarn test:ci
@@ -53,9 +53,13 @@ default:
 
 # Jobs
 ## Fluxo de trabalho principal para rodar instrucoes 
-lint:
+lint:css:
   stage: code_quality
-  script: *lint
+  script: *lint:css
+
+lint:js:
+  stage: code_quality
+  script: *lint:js
 
 # Register Docker Runner
 ## regustrar imagem doker do Docker Hub
