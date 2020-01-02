@@ -64,9 +64,10 @@ test:
   only:
     - develop
     - master
-    - hotfix/*
-    - release/*
-    - feature/*
+    changes:
+      - hotfix/*
+      - release/*
+      - feature/*
 
 build:
   stage: build
