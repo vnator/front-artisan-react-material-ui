@@ -69,23 +69,27 @@ build:
   artifacts:
     paths:
       - build/
-  except:
-    variables:
-      - $CI_COMMIT_REF_NAME !~ /^release\//
-      - $CI_COMMIT_REF_NAME !~ /^hotfix\//
-      - $CI_COMMIT_REF_NAME != "master"
-      - $CI_COMMIT_REF_NAME != "develop"
 
 deploy:release:
   stage: deploy
   script:
-    - echo "deploy realeses or hotfix"
+    - echo "deploy realeses"
   artifacts:
     paths:
       - build/
   only:
     variables:
       - $CI_COMMIT_REF_NAME =~ /^release\//
+
+deploy:hotfix:
+  stage: deploy
+  script:
+    - echo "deploy hotfix"
+  artifacts:
+    paths:
+      - build/
+  only:
+    variables:
       - $CI_COMMIT_REF_NAME =~ /^hotfix\//
 
 deploy:production:
