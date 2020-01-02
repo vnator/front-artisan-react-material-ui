@@ -62,9 +62,9 @@ test:
   stage: test
   script: *test
   only:
-    - develop
-    - master
     changes:
+      - develop
+      - master
       - hotfix/*
       - release/*
       - feature/*
