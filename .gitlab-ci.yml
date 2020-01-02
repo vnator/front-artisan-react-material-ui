@@ -3,6 +3,7 @@ variables:
    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
    S3_BUCKET: $S3_BUCKET
    S3_KEY: $S3_KEY
+   CARAMBOLAS: "carambolas quadradas never die"
    CLOUD_FRONT_DIST_ID: $CLOUD_FRONT_DIST_ID
    CLOUD_FRONT_PATH: $CLOUD_FRONT_PATH
    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -15,11 +16,10 @@ variables:
 .lint: &lint
   - yarn run lint:css
   - yarn run lint:js
-  - echo `$CI_COMMIT_BRANCH =~ /^feature\//`
+  - echo $CARAMBOLAS
   - echo $CI_COMMIT_BRANCH
   
 .test: &test
-  - echo $CI_COMMIT_BRANCH
   - yarn test:ci
 
 .build: &build
