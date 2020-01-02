@@ -63,6 +63,8 @@ lint:
 ## regustrar imagem doker do Docker Hub
 test:
   stage: test
+  image:
+    name: node
   script: *test
   only:
     variables:
