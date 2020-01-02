@@ -47,6 +47,8 @@ default:
 # Jobs
 ## Fluxo de trabalho principal para rodar instrucoes 
 lint:
+  image:
+    name: node
   stage: test_qa
   script: *lint
 
