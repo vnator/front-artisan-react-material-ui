@@ -27,10 +27,7 @@ image: node
 .build: &build
   - yarn build
 
-# Stages:
-## sao utilizados para definir ambientes onde jobs unicos devem ser rodados, tendo em vista as diferencas entre si, por exemplo:
-## dev e prod, sendo que em desenvolvimento validamos os processos comuns e montamos ambiente para testes de integracao. Em producao
-## apos todas as validacoes fazemos o deploy, enviamos para o bucket destino e limpamos o cache do cloudfront com create invalidate.
+# Definicoes de stages(areas em que relacionamos os jobs)
 stages:
   - prepare
   - code_quality
@@ -38,6 +35,7 @@ stages:
   - build    
   - deploy
 
+# Definições de cash
 cache:
   untracked: true
   key: ${CI_COMMIT_REF_SLUG}
@@ -47,22 +45,27 @@ cache:
     - venv/
   policy: pull-push
 
+# Instalar dependencias do projeto
 install:
   stage: prepare
   script: *install
 
+# Verificação da formatação do código css
 lint:style:
   stage: code_quality
   script: *lint_css
 
+# Verificação de formatação do código javascript/react
 lint:script:
   stage: code_quality
   script: *lint_js
 
+# Rodar testes unitarios
 unity_test:
   stage: test
   script: *test
 
+# Construir artefato
 build:
   stage: build
   script: *build
@@ -70,6 +73,7 @@ build:
     paths:
       - build/
 
+# Deploy de uma Release para homologacao
 deploy:release:
   stage: deploy
   script:
@@ -81,6 +85,7 @@ deploy:release:
     variables:
       - $CI_COMMIT_REF_NAME =~ /^release\//
 
+# Deploy de uma hotfix para Homologacao
 deploy:hotfix:
   stage: deploy
   script:
@@ -92,6 +97,7 @@ deploy:hotfix:
     variables:
       - $CI_COMMIT_REF_NAME =~ /^hotfix\//
 
+# Deploy na master ativado manualmente
 deploy:production:
   stage: deploy 
   script:
@@ -111,8 +117,4 @@ deploy:production:
 
 # aws cache invalidate
 
-# criar merge request para determinada branch
-## develop & master
-
-# create merge request
 
