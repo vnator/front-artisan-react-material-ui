@@ -1,26 +1,35 @@
 @font-face {
-  font-family: 'Fira Code';
-  src: url('../fonts/bold/firacode-bold.woff2') format('woff2'),
-       url('../fonts/bold/firacode-bold.woff') format('woff'),
-       url('../fonts/bold/firacode-bold.otf') format('otf');
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.ttf') format('ttf'),
+    url('../fonts/Roboto-Bold.woff') format('woff'),
+    url('../fonts/Roboto-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Fira Code';
-  src: url('../fonts/medium/firacode-medium.woff2') format('woff2'),
-       url('../fonts/medium/firacode-medium.woff') format('woff'),
-       url('../fonts/medium/firacode-medium.otf') format('otf');
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Medium.ttf') format('ttf'),
+    url('../fonts/Roboto-Medium.woff') format('woff'),
+    url('../fonts/Roboto-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Fira Code';
-  src: url('../fonts/light/firacode-light.woff2') format('woff2'),
-       url('../fonts/light/firacode-light.woff') format('woff'),
-       url('../fonts/light/firacode-light.otf') format('otf');
-  font-weight: normal;
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.ttf') format('ttf'),
+    url('../fonts/Roboto-Regular.woff') format('woff'),
+    url('../fonts/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Light.ttf') format('ttf'),
+    url('../fonts/Roboto-Light.woff') format('woff'),
+    url('../fonts/Roboto-Light.woff2') format('woff2');
+  font-weight: 300;
   font-style: normal;
 }
