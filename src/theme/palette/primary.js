@@ -1,8 +1,5 @@
-const primary = Object.freeze({
-  light: '#D1C4E9',
-  main: '#673AB7',
-  dark: '#512DA8',
-  contrastText: '#fff',
-});
+import { Palette } from './Palete';
+
+const primary = new Palette('#D1C4E9', '#673AB7', '#512DA8', '#fff');
 
 export { primary };

@@ -1,8 +1,5 @@
-const error = Object.freeze({
-  light: '#e57373',
-  main: '#f44336',
-  dark: '#d32f2f',
-  contrastText: '#fff',
-});
+import { Palette } from './Palete';
+
+const error = new Palette('#e57373', '#f44336', '#d32f2f', '#fff');
 
 export { error };

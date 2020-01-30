@@ -1,9 +1,11 @@
-const h4 = Object.freeze({
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  fontWeight: 400,
-  fontSize: '2.125rem',
-  lineHeight: 1.235,
-  letterSpacing: '-0.00735em',
-});
+import { Typography } from './Typography';
+
+const h4 = new Typography(
+  '"Roboto", "Helvetica", "Arial", sans-serif',
+  400,
+  '2.125rem',
+  1.235,
+  '-0.00735em',
+);
 
 export { h4 };

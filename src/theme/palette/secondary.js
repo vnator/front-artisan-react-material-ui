@@ -1,8 +1,5 @@
-const secondary = Object.freeze({
-  light: '#FFECB3',
-  main: '#FFC107',
-  dark: '#FFA000',
-  contrastText: '#212121',
-});
+import { Palette } from './Palete';
+
+const secondary = new Palette('#FFECB3', '#FFC107', '#FFA000', '#212121');
 
 export { secondary };

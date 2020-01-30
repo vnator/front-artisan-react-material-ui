@@ -1,10 +1,12 @@
-const button = Object.freeze({
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  fontWeight: 500,
-  fontSize: '0.875rem',
-  lineHeight: 1.75,
-  letterSpacing: '0.02857em',
-  textTransform: 'uppercase',
-});
+import { Typography } from './Typography';
+
+const button = new Typography(
+  '"Roboto", "Helvetica", "Arial", sans-serif',
+  500,
+  '0.875rem',
+  1.75,
+  '0.02857em',
+  'uppercase',
+);
 
 export { button };

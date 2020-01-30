@@ -1,8 +1,10 @@
-const warning = Object.freeze({
-  light: '#ffb74d',
-  main: '#ff9800',
-  dark: '#f57c00',
-  contrastText: 'rgba(0, 0, 0, 0.87)',
-});
+import { Palette } from './Palete';
+
+const warning = new Palette(
+  '#ffb74d',
+  '#ff9800',
+  '#f57c00',
+  'rgba(0, 0, 0, 0.87)',
+);
 
 export { warning };
