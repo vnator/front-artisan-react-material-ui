@@ -1,5 +1,5 @@
 const header_enUS = {
-  title: 'FRONTEND REACT STARTER KIT',
+  title: 'FRONTEND REACT SDK',
   logoAlt: 'iesde',
 };
 
