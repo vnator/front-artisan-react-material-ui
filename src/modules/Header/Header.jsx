@@ -1,28 +1,27 @@
 import React from 'react';
+import { AppBar, Typography, Toolbar, IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import { useIntl } from 'react-intl';
 
 import style from './Header.module.css';
-import logo from '../../img/logo.png';
 
 const Header = () => {
   const { formatMessage } = useIntl();
 
   return (
     <header className={style.Header}>
-      <div className={style.logo}>
-        <img
-          src={logo}
-          className={style.logoImg}
-          alt={formatMessage({
-            id: 'header.logoAlt',
-          })}
-        />
-      </div>
-      <h1 className={style.title}>
-        {formatMessage({
-          id: 'header.title',
-        })}
-      </h1>
+      <AppBar>
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6">
+            {formatMessage({
+              id: 'header.title',
+            })}
+          </Typography>
+        </Toolbar>
+      </AppBar>
     </header>
   );
 };

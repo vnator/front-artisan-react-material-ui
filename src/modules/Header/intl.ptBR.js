@@ -1,5 +1,5 @@
 const header_ptBR = {
-  title: 'FRONTEND REACT STARTER KIT',
+  title: 'FRONTEND REACT SDK',
   logoAlt: 'iesde',
 };
 
