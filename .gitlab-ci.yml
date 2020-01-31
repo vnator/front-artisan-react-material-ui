@@ -15,9 +15,6 @@ image: node
 .install: &install
   - yarn
 
-.lint_css: &lint_css
-  - yarn run lint:css
-
 .lint_js: &lint_js
   - yarn run lint:js
   
@@ -49,11 +46,6 @@ cache:
 install:
   stage: prepare
   script: *install
-
-# Verificação da formatação do código css
-lint:style:
-  stage: code_quality
-  script: *lint_css
 
 # Verificação de formatação do código javascript/react
 lint:script:

@@ -1,9 +1,9 @@
 import { easing } from './easing';
 import { duration } from './duration';
 
-const transitions = Object.freeze({
+const transitions = {
   easing: easing,
   duration: duration,
-});
+};
 
 export { transitions };

@@ -1,4 +1,4 @@
-const action = Object.freeze({
+const action = {
   active: 'rgba(0, 0, 0, 0.54)',
   hover: 'rgba(0, 0, 0, 0.04)',
   hoverOpacity: 0.04,
@@ -6,6 +6,6 @@ const action = Object.freeze({
   selectedOpacity: 0.08,
   disabled: 'rgba(0, 0, 0, 0.26)',
   disabledBackground: 'rgba(0, 0, 0, 0.12)',
-});
+};
 
 export { action };

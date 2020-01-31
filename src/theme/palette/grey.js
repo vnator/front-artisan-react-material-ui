@@ -1,4 +1,4 @@
-const grey = Object.freeze({
+const grey = {
   '50': '#fafafa',
   '100': '#f5f5f5',
   '200': '#eeeeee',
@@ -13,6 +13,6 @@ const grey = Object.freeze({
   A200: '#aaaaaa',
   A400: '#303030',
   A700: '#616161',
-});
+};
 
 export { grey };

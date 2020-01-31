@@ -1,6 +1,6 @@
-const common = Object.freeze({
+const common = {
   black: '#000',
   white: '#fff',
-});
+};
 
 export { common };

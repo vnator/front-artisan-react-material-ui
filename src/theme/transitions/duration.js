@@ -1,4 +1,4 @@
-const duration = Object.freeze({
+const duration = {
   shortest: 150,
   shorter: 200,
   short: 250,
@@ -6,6 +6,6 @@ const duration = Object.freeze({
   complex: 375,
   enteringScreen: 225,
   leavingScreen: 195,
-});
+};
 
 export { duration };

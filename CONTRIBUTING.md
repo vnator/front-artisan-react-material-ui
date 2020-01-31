@@ -83,15 +83,10 @@ Description of Folder Structure and file organization
     - -> `pages/` - pages of application.
       - -> `pages/AnyComponent` - Default Component Structure.
     - -> `queries/` - GraphQL Queries for Data Fetching.
-    - -> `theme/` - CSS Global Definitions.
-      - -> `colors.css` - Theme Colors definitions.
-      - -> `effects.css` - Borders, animations, transitions and any effect.
-      - -> `font-face.css` - Font-Face definitions.
-      - -> `measures.css` - Measures and space definitions.
-      - -> `normalize.css` - Normalize application for cross Browser.
-      - -> `typograph.css` - Typography for font-size, letter-spacing, line-height and etc.
+    - -> `theme/` - Material Ui Theme Object see the about [customization theme](https://material-ui.com/customization/theming/).
+      - -> theme/font-face.css - Font face definitions.
     - -> `utils/` - Javascript Functions for any persistent case.
-    - -> `index.css` - main file for import global definitions.
+    - -> `index.css` - main file for import global definitions, in pure css.
     - -> `index.js` - main source file to init the application.
     - -> `messages.js` - main file for request the messages for Internacionalization.
 
@@ -138,69 +133,6 @@ describe('sum', () => {
   });
 });
 ```
-## 11 CSS Patterns
+## 11 Style
 
-All our style use [css-modules](https://github.com/css-modules/css-modules) for removing the cascade of our stylesheets. __src/theme/__.
-
-- **React Components:** use [PascalCase](https://wiki.c2.com/?PascalCase)
-```css
-.MyComponent {
-  padding: 20px;
-}
-```
-
-- **global variables:** Must be defined in __src/theme/__, use the categories __measures__, __colors__, __effects__ or __typography__ for organize.
-
-- **local variables:** Local variables can be simple =D
-
-```css
-.MyComponent {
-
-/* my Component background */
-  --background: #ff00ff;
-
-/* my Component default color */
-  --color: #999;
-
-/* my Component padding */
-  --pad: 20px;
-}
-```
-
-- **Children:** Children elements in component must be [camelCase](https://wiki.c2.com/?CamelCase).
-```css
-.MyComponent .childElement1 {
-  background: red;
-}
-
-.MyComponent .childElement2 {
-  color: blue;
-}
-```
-
-- **modifiers:** For change the state of component use '_'(underline character) how sulfix. Ex:
-```css
-.MyComponent {
-  background: red;
-}
-
-.MyComponent._blueBackground {
-  background: blue;
-}
-
-.OtherComponent {
-    visibility: hide;
-}
-
-.OtherComponent._active {
-    visibility: visible;
-}
-```
-- **resets:** Resets are global modifiers for remove a default element definition.
-```css
-/* modifier to reset the <a href="#"> element */
-a._reset {
-  color: black;
-  text-decoration: none;
-}
-```
+All our style use material ui definitions see [material-ui styles](https://material-ui.com/styles/basics/) and use the [theme](https://material-ui.com/styles/advanced/) to take our variables.

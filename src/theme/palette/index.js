@@ -9,13 +9,13 @@ import { grey } from './grey';
 import { text } from './text';
 import { action } from './action';
 
-const palette = Object.freeze({
+const palette = {
   type: 'light',
   divider: 'rgba(0, 0, 0, 0.12)',
-  background: Object.freeze({
+  background: {
     paper: '#fff',
     default: '#fafafa',
-  }),
+  },
   common,
   primary,
   secondary,
@@ -26,6 +26,6 @@ const palette = Object.freeze({
   grey,
   text,
   action,
-});
+};
 
 export { palette };

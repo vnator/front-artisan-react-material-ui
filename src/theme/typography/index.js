@@ -22,7 +22,7 @@ const defaultConfig = {
   fontWeightBold: 700,
 };
 
-const typography = Object.freeze({
+const typography = {
   ...defaultConfig,
   h1,
   h2,
@@ -37,6 +37,6 @@ const typography = Object.freeze({
   button,
   caption,
   overline,
-});
+};
 
 export { typography, defaultConfig };

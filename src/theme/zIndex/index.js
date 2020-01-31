@@ -1,4 +1,4 @@
-const zIndex = Object.freeze({
+const zIndex = {
   mobileStepper: 1000,
   speedDial: 1050,
   appBar: 1100,
@@ -6,6 +6,6 @@ const zIndex = Object.freeze({
   modal: 1300,
   snackbar: 1400,
   tooltip: 1500,
-});
+};
 
 export { zIndex };

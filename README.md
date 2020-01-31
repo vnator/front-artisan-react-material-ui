@@ -13,7 +13,7 @@ Dependencies of project.
 - [React Intl](https://github.com/formatjs/react-intl): Lib form internacionalization and static textual content.
 - [React Router](https://reacttraining.com/react-router/web/guides/quick-start): create and management routes.
 - [Ramda](https://ramdajs.com/): lib with set of functions for Functional Programing.
-- [CSS Modules](https://github.com/css-modules/css-modules): lib for removing the cascade of stylesheets.
+- [Material Ui](https://material-ui.com/): Framework for UI definitions.
 
 ### QA and Tests
 Dev Dependencies to write tests or mainteining the code quality.
@@ -65,11 +65,6 @@ $ yarn deploy
 $ npm run lint:js
 # or
 $ yarn run lint:js
-
-# Check your CSS code format
-$ npm run lint:css
-# or
-$ yarn run lint:css
 
 # Run Commitzen for commit your code with Message Pattern
 $ npm run commit
