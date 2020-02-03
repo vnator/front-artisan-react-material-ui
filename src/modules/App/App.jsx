@@ -17,6 +17,7 @@ import { UserList } from '../../pages/UserList/UserList';
 import { User } from '../../pages/User';
 import { Toast } from '../../components/Toast/Toast';
 import { Nav } from '../Nav/Nav';
+import { Container, Typography, Link, Paper } from '@material-ui/core';
 
 const App = () => {
   const { formatMessage } = useIntl();
@@ -27,48 +28,52 @@ const App = () => {
     <ThemeProvider theme={customTheme}>
       <div className={style.App}>
         <Header />
-        <p className={style.paragraph}>
-          {formatMessage(
-            {
-              id: 'app.paragraph',
-            },
-            {
-              extern: str => (
-                <a
-                  key={str}
-                  className={style.link}
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  {str}
-                </a>
-              ),
-              code: str => (
-                <code key={str} className={style.code}>
-                  {str}
-                </code>
-              ),
-            },
-          )}
-        </p>
-        <Router>
-          <Nav />
-          <Switch>
-            <Route exact path={MAIN_ROUTES.MAIN}>
-              <Counter />
-            </Route>
-            <Route path={MAIN_ROUTES.ADDRESS}>
-              <Address />
-            </Route>
-            <Route path={MAIN_ROUTES.USER_LIST}>
-              <UserList />
-            </Route>
-            <Route path={MAIN_ROUTES.USER()}>
-              <User />
-            </Route>
-          </Switch>
-        </Router>
-        <Toast />
+        <Container>
+          <Paper>
+            <Typography color="textPrimary" variant="body1">
+              {formatMessage(
+                {
+                  id: 'app.paragraph',
+                },
+                {
+                  extern: str => (
+                    <Link
+                      key={str}
+                      className={style.link}
+                      href="https://reactjs.org"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      {str}
+                    </Link>
+                  ),
+                  code: str => (
+                    <code key={str} className={style.code}>
+                      {str}
+                    </code>
+                  ),
+                },
+              )}
+            </Typography>
+            <Router>
+              <Nav />
+              <Switch>
+                <Route exact path={MAIN_ROUTES.MAIN}>
+                  <Counter />
+                </Route>
+                <Route path={MAIN_ROUTES.ADDRESS}>
+                  <Address />
+                </Route>
+                <Route path={MAIN_ROUTES.USER_LIST}>
+                  <UserList />
+                </Route>
+                <Route path={MAIN_ROUTES.USER()}>
+                  <User />
+                </Route>
+              </Switch>
+            </Router>
+          </Paper>
+          <Toast />
+        </Container>
       </div>
     </ThemeProvider>
   );

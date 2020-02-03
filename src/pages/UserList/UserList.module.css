@@ -3,8 +3,8 @@
   --cell: 260px;
   --size: calc((var(--cell) * 2) + var(--space-large));
 
+  background: var(--first);
   color: var(--white-full);
-  min-height: 100vh;
   height: auto;
   max-width: var(--size);
   margin: 0 auto;
