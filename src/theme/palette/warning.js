@@ -1,4 +1,4 @@
-import { Palette } from './Palete';
+import { Palette } from './Palette';
 
 const warning = new Palette(
   '#ffb74d',

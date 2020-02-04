@@ -3,6 +3,7 @@ import {
   createMuiTheme,
   ThemeProvider,
   responsiveFontSizes,
+  makeStyles,
 } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useIntl } from 'react-intl';
@@ -19,18 +20,32 @@ import { Toast } from '../../components/Toast/Toast';
 import { Nav } from '../Nav/Nav';
 import { Container, Typography, Link, Paper } from '@material-ui/core';
 
+const useStyles = makeStyles(props => ({
+  app: {
+    textAlign: 'center',
+    background: props.palette.grey['200'],
+    height: '100vh',
+  },
+  message: {
+    padding: '30px 0',
+  },
+}));
+
 const App = () => {
   const { formatMessage } = useIntl();
-
   const customTheme = responsiveFontSizes(createMuiTheme(theme));
+  const classes = useStyles();
 
   return (
     <ThemeProvider theme={customTheme}>
-      <div className={style.App}>
+      <div className={classes.app}>
         <Header />
         <Container>
-          <Paper>
-            <Typography color="textPrimary" variant="body1">
+          <Paper elevation={4}>
+            <Typography
+              className={classes.message}
+              color="textPrimary"
+              variant="body1">
               {formatMessage(
                 {
                   id: 'app.paragraph',

@@ -1,4 +1,4 @@
-import { Palette } from './Palete';
+import { Palette } from './Palette';
 
 const success = new Palette(
   '#81c784',

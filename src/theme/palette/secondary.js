@@ -1,5 +1,5 @@
-import { Palette } from './Palete';
+import { Palette } from './Palette';
 
-const secondary = new Palette('#FFECB3', '#FFC107', '#FFA000', '#212121');
+const secondary = new Palette('#ffd149', '#ffa000', '#c67100', '#000000');
 
 export { secondary };
