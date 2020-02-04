@@ -1,8 +1,8 @@
 const userList_ptBR = {
-  title: 'GraphQL Users Request',
-  newUser: 'add new user',
+  title: 'Requisição de Usuários GraphQL',
+  newUser: 'adicionar novo usuário',
   list: {
-    name: 'name',
+    name: 'nome',
     email: 'email',
   },
 };

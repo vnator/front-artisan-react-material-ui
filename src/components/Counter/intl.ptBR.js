@@ -1,6 +1,6 @@
 const counter_ptBR = {
-  title: 'Counter',
-  button: 'one by one',
+  title: 'Contador',
+  button: 'um por um',
 };
 
 export { counter_ptBR };

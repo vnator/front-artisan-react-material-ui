@@ -1,6 +1,7 @@
 .User {
   --border: 1px solid var(--white-glass);
 
+  background: var(--second);
   color: var(--white-full);
   height: auto;
   display: flex;

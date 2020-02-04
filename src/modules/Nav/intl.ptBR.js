@@ -1,8 +1,8 @@
 const nav_ptBR = {
-  title: 'Module Name',
-  counter: 'counter',
-  address: 'address',
-  users: 'users',
+  title: 'Nome do Módulo',
+  counter: 'Contador',
+  address: 'Endereços',
+  users: 'Usuários',
 };
 
 export { nav_ptBR };

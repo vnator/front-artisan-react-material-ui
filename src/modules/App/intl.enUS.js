@@ -16,8 +16,8 @@ const app_enUS = {
       [CODE.A01]: `${TYPE.CRASH}-${CODE.A01}: Invalid street name`,
     },
     [TYPE.FETCH]: {
-      [CODE.A01]: `${TYPE.FETCH}-${CODE.A02}: User with {user} don't found`,
-      [CODE.A02]: `${TYPE.FETCH}-${CODE.A02}: User with {user} don't found`,
+      [CODE.A01]: `${TYPE.FETCH}-${CODE.A01}: User with id: {user} don't found`,
+      [CODE.A02]: `${TYPE.FETCH}-${CODE.A02}: User with e-mail: {user} don't found`,
       [CODE.A03]: `${TYPE.FETCH}-${CODE.A03}: User {user} don't registred`,
     },
   },
