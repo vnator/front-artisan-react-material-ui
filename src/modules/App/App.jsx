@@ -25,6 +25,10 @@ const useStyles = makeStyles(props => ({
     textAlign: 'center',
     background: props.palette.grey['200'],
     height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    margin: '80px 0',
   },
   message: {
     padding: '30px 0',
@@ -40,7 +44,7 @@ const App = () => {
     <ThemeProvider theme={customTheme}>
       <div className={classes.app}>
         <Header />
-        <Container>
+        <Container className={classes.container}>
           <Paper elevation={4}>
             <Typography
               className={classes.message}

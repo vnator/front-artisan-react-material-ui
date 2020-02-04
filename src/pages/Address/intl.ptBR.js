@@ -1,4 +1,11 @@
 const address_ptBR = {
+  title: 'Address List',
+  head: {
+    id: 'id',
+    city: 'city',
+    street: 'street',
+    number: 'number',
+  },
   street: 'street',
   city: 'city',
   submit: 'submit',

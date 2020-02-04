@@ -6,14 +6,12 @@ import { useIntl } from 'react-intl';
 
 import { setNavActive } from '../Nav/redux/actions';
 
-import style from './Header.module.css';
-
 const Header = () => {
   const { formatMessage } = useIntl();
   const dispatch = useDispatch();
 
   return (
-    <header className={style.Header}>
+    <header>
       <AppBar>
         <Toolbar>
           <IconButton

@@ -2,65 +2,29 @@ import React, { Component } from 'react';
 import Type from 'prop-types';
 
 import {
-  Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
   IconButton,
-  TableFooter,
-  styled,
-  Button,
-  Paper,
-  InputBase,
-  TextField,
 } from '@material-ui/core';
+
+import {
+  Cell,
+  Button,
+  Input,
+  FooterRow,
+  Footer,
+  Title,
+  Table,
+  Head,
+  TabContainer,
+} from './Address.css';
 
 import { EditOutlined } from '@material-ui/icons';
 
 import { el } from './element.selectors.js';
 import { intlShape } from '../../utils/intlShape';
-
-const StyledTabContainer = styled(TableContainer)({
-  display: 'flex',
-  justifyContent: 'center',
-  margin: '40 0',
-});
-
-const StyledTable = styled(Table)({
-  maxWidth: 'calc(100% - 80px)',
-});
-
-const StyledFooter = styled(({ children, ...props }) => (
-  <div {...props}>{children}</div>
-))({
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  paddingBottom: 40,
-});
-
-const StyledFooterRow = styled(({ children, ...props }) => (
-  <div {...props}>{children}</div>
-))({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  width: 'calc(100% - 80px)',
-});
-
-const StyledInput = styled(TextField)({
-  flexGrow: 1,
-});
-
-const StyledButton = styled(Button)({
-  height: 53.3,
-  width: 160,
-  borderRadius: 0,
-});
 
 class Address extends Component {
   // selector example usage
@@ -82,15 +46,26 @@ class Address extends Component {
 
     return (
       <div>
-        <StyledTabContainer>
-          <StyledTable aria-label="simple table" padding="none">
+        <Title variant="h4" color="primary">
+          {formatMessage({ id: 'address.title' })}
+        </Title>
+        <TabContainer>
+          <Table aria-label="simple table" size="small">
             <TableHead>
               <TableRow>
-                <TableCell>id</TableCell>
-                <TableCell>city</TableCell>
-                <TableCell>street</TableCell>
-                <TableCell>number</TableCell>
-                <TableCell></TableCell>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.id' })}
+                </Head>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.city' })}
+                </Head>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.street' })}
+                </Head>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.number' })}
+                </Head>
+                <Head size="medium"></Head>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -100,9 +75,10 @@ class Address extends Component {
                   <TableCell>{val.city}</TableCell>
                   <TableCell>{val.street}</TableCell>
                   <TableCell>{val.number}</TableCell>
-                  <TableCell>
+                  <Cell>
                     <IconButton
                       id={el.btnSelectStreet}
+                      color="primary"
                       onClick={() => {
                         this.setState(prev => ({
                           ...prev,
@@ -112,16 +88,16 @@ class Address extends Component {
                       }}>
                       <EditOutlined />
                     </IconButton>
-                  </TableCell>
+                  </Cell>
                 </TableRow>
               ))}
             </TableBody>
-          </StyledTable>
-        </StyledTabContainer>
+          </Table>
+        </TabContainer>
 
-        <StyledFooter>
-          <StyledFooterRow>
-            <StyledInput
+        <Footer>
+          <FooterRow>
+            <Input
               id={el.inputUpdateStreet}
               value={this.state.newAddress}
               onChange={e => this.setState({ newAddress: e.target.value })}
@@ -138,17 +114,17 @@ class Address extends Component {
               })}
               inputProps={{ 'aria-label': 'search google maps' }}
             />
-            <StyledButton
+            <Button
               variant="contained"
               color="primary"
               id={el.btnUpdateStreet}
               disableElevation
               onClick={this.updateStreet}>
               {formatMessage({ id: 'address.submit' })}
-            </StyledButton>
-          </StyledFooterRow>
-          <StyledFooterRow>
-            <StyledInput
+            </Button>
+          </FooterRow>
+          <FooterRow>
+            <Input
               variant="filled"
               label={formatMessage({ id: 'address.city' })}
               id={el.inputUpdateCity}
@@ -159,16 +135,16 @@ class Address extends Component {
               onChange={e => this.setState({ newCity: e.target.value })}
               inputProps={{ 'aria-label': 'search google maps' }}
             />
-            <StyledButton
+            <Button
               variant="contained"
               color="primary"
               id={el.btnUpdateCity}
               disableElevation
               onClick={() => this.props.setAddressCity(this.state.newCity)}>
               {formatMessage({ id: 'address.submit' })}
-            </StyledButton>
-          </StyledFooterRow>
-        </StyledFooter>
+            </Button>
+          </FooterRow>
+        </Footer>
       </div>
     );
   }

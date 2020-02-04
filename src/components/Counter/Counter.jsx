@@ -10,12 +10,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCounter } from './redux/actions.js';
 import { setCounterOneByOne } from './redux/thunks.js';
 import { el } from './element.selectors';
+import { useIntl } from 'react-intl';
 
 const useStyles = makeStyles({
   counter: {
     margin: '50px 0',
     display: 'inline-flex',
     flexDirection: 'column',
+  },
+  title: {
+    marginBottom: 40,
   },
   box: {
     display: 'inline-flex',
@@ -25,18 +29,22 @@ const useStyles = makeStyles({
 });
 
 const Counter = () => {
+  const { formatMessage } = useIntl();
   const classes = useStyles();
   const counter = useSelector(state => state.counter);
   const dispatch = useDispatch();
 
   return (
     <div className={classes.counter}>
+      <Typography className={classes.title} variant="h4" color="primary">
+        {formatMessage({ id: 'counter.title' })}
+      </Typography>
       <Button
         color="primary"
         variant="outlined"
         id={el.oneByOne}
         onClick={() => dispatch(setCounterOneByOne())}>
-        one by one
+        {formatMessage({ id: 'counter.button' })}
       </Button>
       <div className={classes.box}>
         <IconButton
