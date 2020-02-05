@@ -6,7 +6,7 @@ import { userList_ptBR } from './pages/UserList/intl.ptBR.js';
 import { user_ptBR } from './pages/User/intl.ptBR.js';
 import { address_ptBR } from './pages/Address/intl.ptBR.js';
 import { icon_ptBR } from './components/Icon/intl.ptBR.js';
-import { counter_ptBR } from './components/Counter/intl.ptBR.js';
+import { counter_ptBR } from './pages/Counter/intl.ptBR.js';
 
 // en-US
 import { app_enUS } from './modules/App/intl.enUS.js';
@@ -16,7 +16,7 @@ import { userList_enUS } from './pages/UserList/intl.enUS.js';
 import { user_enUS } from './pages/User/intl.enUS.js';
 import { address_enUS } from './pages/Address/intl.enUS.js';
 import { icon_enUS } from './components/Icon/intl.enUS.js';
-import { counter_enUS } from './components/Counter/intl.enUS.js';
+import { counter_enUS } from './pages/Counter/intl.enUS.js';
 
 const messages = Object.freeze({
   'en-US': {

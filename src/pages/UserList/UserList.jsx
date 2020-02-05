@@ -1,25 +1,62 @@
 import React from 'react';
+import Type from 'prop-types';
 
 import { useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { useIntl } from 'react-intl';
 
 import {
-  IconFlatDown,
-  IconFlatUp,
-  IconFlatLeft,
-  IconFlatRight,
-} from '../../components/Icon';
+  ArrowDropDown,
+  ArrowDropUp,
+  ArrowLeft,
+  ArrowRight,
+  EditOutlined,
+} from '@material-ui/icons';
 
-import style from './UserList.module.css';
 import { MAIN_ROUTES } from '../../const/routes';
 import { Btn } from '../../components/Btn/Btn';
 import { SORT_FIELD } from '../../const/userListParams';
 import { USER } from '../../queries/user';
 import { usePagination } from './usePagination';
+import { useStyles } from './UserList.css';
+import {
+  Typography,
+  Button,
+  IconButton,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from '@material-ui/core';
+
+import {
+  Table,
+  TabContainer,
+  Head,
+  Footer,
+  FooterRow,
+  Cell,
+} from '../../components/Table.css';
+
+const HeadCell = ({ field, sortField, event }) => {
+  const { formatMessage } = useIntl();
+
+  return (
+    <Head>
+      <Button
+        onClick={() => event(field)}
+        endIcon={sortField === field ? <ArrowDropDown /> : <ArrowDropUp />}>
+        {formatMessage({
+          id: `users.list.${field}`,
+        })}
+      </Button>
+    </Head>
+  );
+};
 
 const UserList = () => {
   const history = useHistory();
+  const classes = useStyles();
   const [pag, { nextPage, prevPage, orderBy }] = usePagination(SORT_FIELD.NAME);
 
   const { formatMessage } = useIntl();
@@ -29,73 +66,73 @@ const UserList = () => {
   });
 
   return (
-    <div className={style.UserList}>
-      <h2 className={style.title}>
+    <div>
+      <Typography color="primary" variant="h4" className={classes.title}>
         {formatMessage({
           id: 'users.title',
         })}
-      </h2>
+      </Typography>
 
-      <ul className={style.list}>
-        <li className={style.head}>
-          <button
-            className={style.iconButton}
-            onClick={() => orderBy(SORT_FIELD.NAME)}>
-            {formatMessage({
-              id: 'users.list.name',
-            })}
-            {pag.params.sortField === SORT_FIELD.NAME ? (
-              <IconFlatDown className={style.icon} />
-            ) : (
-              <IconFlatUp className={style.icon} />
-            )}
-          </button>
-          <button
-            className={style.iconButton}
-            onClick={() => orderBy(SORT_FIELD.EMAIL)}>
-            {formatMessage({
-              id: 'users.list.email',
-            })}
-            {pag.params.sortField === SORT_FIELD.EMAIL ? (
-              <IconFlatDown className={style.icon} />
-            ) : (
-              <IconFlatUp className={style.icon} />
-            )}
-          </button>
-        </li>
+      <TabContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {Object.values(SORT_FIELD).map(val => (
+                <HeadCell
+                  field={val}
+                  sortField={pag.params.sortField}
+                  event={orderBy}
+                />
+              ))}
+              <Head size="small" />
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data &&
+              data.users.map(user => (
+                <TableRow key={user.id}>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <Cell>
+                    <IconButton
+                      onClick={() => history.push(MAIN_ROUTES.USER(user.id))}>
+                      <EditOutlined />
+                    </IconButton>
+                  </Cell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TabContainer>
+      <Footer>
+        <FooterRow>
+          <TableCell>
+            <IconButton onClick={prevPage}>
+              <ArrowLeft />
+            </IconButton>
+            <strong>{pag.page}</strong>
+            <IconButton onClick={nextPage}>
+              <ArrowRight />
+            </IconButton>
+          </TableCell>
 
-        {data &&
-          data.users.map(user => (
-            <li key={user.id} className={style.item}>
-              <button
-                className={style.user}
-                onClick={() => history.push(MAIN_ROUTES.USER(user.id))}>
-                <strong className={style.cell}>{user.name}</strong>
-                <span className={style.cell}>{user.email}</span>
-              </button>
-            </li>
-          ))}
-
-        <li className={style.foot}>
-          <button onClick={prevPage} className={style.iconButton}>
-            <IconFlatLeft className={style.icon} />
-          </button>
-          <strong className={style.page}>{pag.page}</strong>
-          <button onClick={nextPage} className={style.iconButton}>
-            <IconFlatRight className={style.icon} />
-          </button>
-        </li>
-      </ul>
-
-      <Btn
-        class="carambolas-quadradas"
-        onClick={() => history.push(MAIN_ROUTES.USER(0))}>
-        {formatMessage({
-          id: 'users.newUser',
-        })}
-      </Btn>
+          <TableCell>
+            <Btn onClick={() => history.push(MAIN_ROUTES.USER(0))}>
+              {formatMessage({
+                id: 'users.newUser',
+              })}
+            </Btn>
+          </TableCell>
+        </FooterRow>
+      </Footer>
     </div>
   );
+};
+
+HeadCell.propTypes = {
+  field: Type.string.isRequired,
+  sortField: Type.string.isRequired,
+  event: Type.func.isRequired,
 };
 
 export { UserList };

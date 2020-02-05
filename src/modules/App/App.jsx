@@ -10,7 +10,7 @@ import { useIntl } from 'react-intl';
 
 import style from './App.module.css';
 import { theme } from '../../theme';
-import { Counter } from '../../components/Counter/Counter';
+import { Counter } from '../../pages/Counter/Counter';
 import { Address } from '../../pages/Address';
 import { Header } from '../Header/Header';
 import { MAIN_ROUTES } from '../../const/routes';

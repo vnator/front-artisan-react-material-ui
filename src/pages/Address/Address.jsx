@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
+import { EditOutlined } from '@material-ui/icons';
 
 import {
   TableBody,
@@ -10,21 +11,18 @@ import {
 } from '@material-ui/core';
 
 import {
-  Cell,
-  Button,
-  Input,
-  FooterRow,
-  Footer,
-  Title,
   Table,
-  Head,
   TabContainer,
-} from './Address.css';
-
-import { EditOutlined } from '@material-ui/icons';
-
-import { el } from './element.selectors.js';
+  Head,
+  Footer,
+  FooterRow,
+  Cell,
+} from '../../components/Table.css';
+import { Title } from '../../components/Title.css';
 import { intlShape } from '../../utils/intlShape';
+
+import { Button, Input } from './Address.css';
+import { el } from './element.selectors.js';
 
 class Address extends Component {
   // selector example usage

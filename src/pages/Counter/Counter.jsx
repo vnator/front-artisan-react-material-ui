@@ -7,6 +7,8 @@ import {
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Title } from '../../components/Title.css';
+
 import { setCounter } from './redux/actions.js';
 import { setCounterOneByOne } from './redux/thunks.js';
 import { el } from './element.selectors';
@@ -17,9 +19,6 @@ const useStyles = makeStyles({
     margin: '50px 0',
     display: 'inline-flex',
     flexDirection: 'column',
-  },
-  title: {
-    marginBottom: 40,
   },
   box: {
     display: 'inline-flex',
@@ -36,9 +35,9 @@ const Counter = () => {
 
   return (
     <div className={classes.counter}>
-      <Typography className={classes.title} variant="h4" color="primary">
+      <Title variant="h4" color="primary">
         {formatMessage({ id: 'counter.title' })}
-      </Typography>
+      </Title>
       <Button
         color="primary"
         variant="outlined"
