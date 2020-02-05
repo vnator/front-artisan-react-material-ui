@@ -10,6 +10,7 @@ import { intlShape } from '../../utils/intlShape';
 import { Title } from '../../components/Title.css';
 
 import { UserContainer, Form, Input, BtnBack } from './User.css';
+import { el } from './element.selectors';
 
 class User extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class User extends Component {
     ) : (
       <UserContainer>
         <BtnBack
+          id={el.btnGoBack}
           color="secondary"
           variant="extended"
           onClick={this.props.history.goBack}>
@@ -118,6 +120,7 @@ class User extends Component {
             />
           ))}
           <Button
+            id={el.btnSubmit}
             variant="outlined"
             color="primary"
             size="large"

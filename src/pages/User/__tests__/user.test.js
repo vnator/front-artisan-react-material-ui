@@ -5,6 +5,7 @@ import { spy } from 'sinon';
 
 import { User } from '../User';
 import { intl } from '../../../utils/enzymeHelper';
+import { el } from '../element.selectors';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -13,6 +14,9 @@ describe('User', () => {
     intl,
     mutate: spy(),
     triggerToast: spy(),
+    history: {
+      goBack: spy(),
+    },
     data: {
       loading: false,
       user: {},
@@ -122,8 +126,21 @@ describe('User', () => {
 
   it('submit method', () => {
     const user = mount(<User {...mockProps} />);
-    user.find('Btn').simulate('click');
+    user
+      .find(`#${el.btnSubmit}`)
+      .first()
+      .simulate('click');
 
     expect(mockProps.triggerToast.calledOnce).toBeTruthy();
+  });
+
+  it('goBack', () => {
+    const user = mount(<User {...mockProps} />);
+    user
+      .find(`#${el.btnGoBack}`)
+      .first()
+      .simulate('click');
+
+    expect(mockProps.history.goBack.calledOnce).toBeTruthy();
   });
 });
