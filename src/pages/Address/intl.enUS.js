@@ -1,4 +1,12 @@
 const address_enUS = {
+  title: 'Address List',
+  edit: 'edit',
+  head: {
+    id: 'id',
+    city: 'city',
+    street: 'street',
+    number: 'number',
+  },
   street: 'street',
   city: 'city',
   submit: 'submit',

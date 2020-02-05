@@ -14,6 +14,7 @@ describe('App', () => {
   it('Snapshot', () => {
     const store = mockStore({
       toast: { active: false, message: '' },
+      nav: { active: false },
     });
 
     const app = mountWithIntl(

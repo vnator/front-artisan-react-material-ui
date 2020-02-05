@@ -1,6 +1,7 @@
 const user_enUS = {
   title: 'GraphQL User Detail',
   submit: 'submit',
+  back: 'back to listage',
   form: {
     name: {
       label: 'Name',

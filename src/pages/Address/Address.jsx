@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
-import style from './Address.module.css';
-import { el } from './element.selectors.js';
+import { EditOutlined } from '@material-ui/icons';
+
+import {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  IconButton,
+  Tooltip,
+} from '@material-ui/core';
+
+import {
+  Table,
+  TabContainer,
+  Head,
+  Footer,
+  FooterRow,
+  Cell,
+} from '../../components/Table.css';
+import { Title } from '../../components/Title.css';
 import { intlShape } from '../../utils/intlShape';
+
+import { Button, Input } from './Address.css';
+import { el } from './element.selectors.js';
 
 class Address extends Component {
   // selector example usage
@@ -20,67 +41,113 @@ class Address extends Component {
 
   render() {
     const { formatMessage } = this.props.intl;
+    const { address } = this.props;
 
     return (
-      <div className={style.Address}>
-        <div className={style.addressList}>
-          {Object.entries(this.props.address).map(([key, val]) => (
-            <div className={style.addressItem} key={key}>
-              <button
-                className={`${style.key} ${el.btnSelectStreet}`}
-                onClick={() => {
-                  this.setState(prev => ({
-                    ...prev,
-                    selected: key,
-                    newAddress: val.street,
-                  }));
-                }}>
-                {key}
-              </button>
-              <span className={style.value}>
-                {val.city}, {val.street} - {val.number}
-              </span>
-            </div>
-          ))}
-          <div className={`${style.addressItem} ${style.input}`}>
-            <span className={`${style.key} ${el.selectedStreet}`}>
-              {this.state.selected
-                ? Object.keys(this.props.address).find(
-                    x => x === this.state.selected,
-                  )
-                : formatMessage({ id: 'address.street' })}
-            </span>
-            <input
-              type="text"
-              className={`${style.value} ${el.inputUpdateStreet}`}
+      <div>
+        <Title variant="h4" color="primary">
+          {formatMessage({ id: 'address.title' })}
+        </Title>
+        <TabContainer>
+          <Table aria-label="simple table" size="small">
+            <TableHead>
+              <TableRow>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.id' })}
+                </Head>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.city' })}
+                </Head>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.street' })}
+                </Head>
+                <Head size="medium">
+                  {formatMessage({ id: 'address.head.number' })}
+                </Head>
+                <Head size="medium"></Head>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.entries(address).map(([key, val]) => (
+                <TableRow key={key}>
+                  <TableCell>{key}</TableCell>
+                  <TableCell>{val.city}</TableCell>
+                  <TableCell>{val.street}</TableCell>
+                  <TableCell>{val.number}</TableCell>
+                  <Cell>
+                    <Tooltip
+                      title={formatMessage({ id: 'address.edit' })}
+                      aria-label={formatMessage({ id: 'address.edit' })}>
+                      <IconButton
+                        id={el.btnSelectStreet}
+                        color="primary"
+                        onClick={() => {
+                          this.setState(prev => ({
+                            ...prev,
+                            selected: key,
+                            newAddress: val.street,
+                          }));
+                        }}>
+                        <EditOutlined />
+                      </IconButton>
+                    </Tooltip>
+                  </Cell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TabContainer>
+
+        <Footer>
+          <FooterRow>
+            <Input
+              id={el.inputUpdateStreet}
               value={this.state.newAddress}
-              placeholder={formatMessage({ id: 'address.placeholder.street' })}
               onChange={e => this.setState({ newAddress: e.target.value })}
+              variant="filled"
+              label={
+                this.state.selected
+                  ? Object.keys(this.props.address).find(
+                      x => x === this.state.selected,
+                    )
+                  : formatMessage({ id: 'address.street' })
+              }
+              placeholder={formatMessage({
+                id: 'address.placeholder.street',
+              })}
+              inputProps={{ 'aria-label': 'search google maps' }}
             />
-            <button
-              className={`${style.key} ${el.btnUpdateStreet}`}
+            <Button
+              variant="contained"
+              color="primary"
+              id={el.btnUpdateStreet}
+              disableElevation
               onClick={this.updateStreet}>
               {formatMessage({ id: 'address.submit' })}
-            </button>
-          </div>
-          <div className={`${style.addressItem} ${style.input}`}>
-            <span className={style.key}>
-              {formatMessage({ id: 'address.city' })}
-            </span>
-            <input
-              type="text"
-              className={`${style.value} ${el.inputUpdateCity}`}
+            </Button>
+          </FooterRow>
+          <FooterRow>
+            <Input
+              variant="filled"
+              label={formatMessage({ id: 'address.city' })}
+              id={el.inputUpdateCity}
               value={this.state.newCity}
-              placeholder={formatMessage({ id: 'address.placeholder.city' })}
+              placeholder={formatMessage({
+                id: 'address.placeholder.city',
+              })}
               onChange={e => this.setState({ newCity: e.target.value })}
+              inputProps={{ 'aria-label': 'search google maps' }}
             />
-            <button
-              className={`${style.key} ${el.btnUpdateCity}`}
+            <Button
+              variant="contained"
+              color="primary"
+              id={el.btnUpdateCity}
+              disableElevation
               onClick={() => this.props.setAddressCity(this.state.newCity)}>
               {formatMessage({ id: 'address.submit' })}
-            </button>
-          </div>
-        </div>
+            </Button>
+          </FooterRow>
+        </Footer>
       </div>
     );
   }

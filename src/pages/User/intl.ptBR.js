@@ -1,22 +1,23 @@
 const user_ptBR = {
-  title: 'GraphQL User Detail',
-  submit: 'submit',
+  title: 'Formulário detalhado de usuário GraphQl',
+  submit: 'enviar',
+  back: 'voltar para lista',
   form: {
     name: {
-      label: 'Name',
-      placeholder: 'type your full name',
+      label: 'nome',
+      placeholder: 'digite seu nome completo',
     },
     email: {
       label: 'E-mail',
-      placeholder: 'type a valid e-mail',
+      placeholder: 'digite um e-mail válido',
     },
     dateOfBirth: {
-      label: 'Birth day',
-      placeholder: 'type the date of your birth',
+      label: 'Data de nascimento',
+      placeholder: 'digite a data do seu nascimento',
     },
     gender: {
-      label: 'Gender',
-      placeholder: 'Select your gender',
+      label: 'Genero',
+      placeholder: 'Selecione seu gênero',
     },
   },
 };

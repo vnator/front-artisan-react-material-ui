@@ -1,9 +1,12 @@
+import { SORT_FIELD } from '../../const/userListParams';
+
 const userList_ptBR = {
-  title: 'GraphQL Users Request',
-  newUser: 'add new user',
+  title: 'Requisição de Usuários GraphQL',
+  newUser: 'adicionar novo usuário',
+  edit: 'editar',
   list: {
-    name: 'name',
-    email: 'email',
+    [SORT_FIELD.NAME]: 'name',
+    [SORT_FIELD.EMAIL]: 'email',
   },
 };
 

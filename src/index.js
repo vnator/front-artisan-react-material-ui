@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloProvider as GraphQlProvider } from '@apollo/react-hooks';
-
+import { CssBaseline } from '@material-ui/core';
 import { IntlProvider } from 'react-intl';
 import { messages } from './messages';
 
@@ -39,7 +39,9 @@ ReactDOM.render(
       <IntlProvider
         locale={locale}
         messages={flattenMessages(messages[locale])}>
-        <App />
+        <CssBaseline>
+          <App />
+        </CssBaseline>
       </IntlProvider>
     </ReduxProvider>
   </GraphQlProvider>,
