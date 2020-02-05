@@ -1,6 +1,7 @@
 const user_ptBR = {
   title: 'Formulário detalhado de usuário GraphQl',
   submit: 'enviar',
+  back: 'voltar para lista',
   form: {
     name: {
       label: 'nome',

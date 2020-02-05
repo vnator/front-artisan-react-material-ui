@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
   IconButton,
+  Tooltip,
 } from '@material-ui/core';
 
 import {
@@ -74,18 +75,22 @@ class Address extends Component {
                   <TableCell>{val.street}</TableCell>
                   <TableCell>{val.number}</TableCell>
                   <Cell>
-                    <IconButton
-                      id={el.btnSelectStreet}
-                      color="primary"
-                      onClick={() => {
-                        this.setState(prev => ({
-                          ...prev,
-                          selected: key,
-                          newAddress: val.street,
-                        }));
-                      }}>
-                      <EditOutlined />
-                    </IconButton>
+                    <Tooltip
+                      title={formatMessage({ id: 'address.edit' })}
+                      aria-label={formatMessage({ id: 'address.edit' })}>
+                      <IconButton
+                        id={el.btnSelectStreet}
+                        color="primary"
+                        onClick={() => {
+                          this.setState(prev => ({
+                            ...prev,
+                            selected: key,
+                            newAddress: val.street,
+                          }));
+                        }}>
+                        <EditOutlined />
+                      </IconButton>
+                    </Tooltip>
                   </Cell>
                 </TableRow>
               ))}

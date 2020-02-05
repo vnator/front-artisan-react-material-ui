@@ -1,5 +1,6 @@
 const address_ptBR = {
   title: 'Address List',
+  edit: 'editar',
   head: {
     id: 'id',
     city: 'city',

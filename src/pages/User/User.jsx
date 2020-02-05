@@ -85,7 +85,9 @@ class User extends Component {
           variant="extended"
           onClick={this.props.history.goBack}>
           <ArrowBack />
-          Back to Listage
+          {formatMessage({
+            id: 'user.back',
+          })}
         </BtnBack>
         <Title color="primary" variant="h4">
           {formatMessage({

@@ -1,5 +1,11 @@
 import React from 'react';
-import { IconButton, Button, Typography, makeStyles } from '@material-ui/core';
+import {
+  IconButton,
+  Button,
+  Typography,
+  makeStyles,
+  Tooltip,
+} from '@material-ui/core';
 import {
   RemoveCircleOutlineOutlined,
   AddCircleOutlineOutlined,
@@ -47,23 +53,31 @@ const Counter = () => {
         {formatMessage({ id: 'counter.button' })}
       </Button>
       <div className={classes.box}>
-        <IconButton
-          color="primary"
-          variant="outlined"
-          id={el.minus}
-          onClick={() => dispatch(setCounter(counter - 1))}>
-          <RemoveCircleOutlineOutlined />
-        </IconButton>
+        <Tooltip
+          title={formatMessage({ id: 'counter.minus' })}
+          aria-label={formatMessage({ id: 'counter.minus' })}>
+          <IconButton
+            color="primary"
+            variant="outlined"
+            id={el.minus}
+            onClick={() => dispatch(setCounter(counter - 1))}>
+            <RemoveCircleOutlineOutlined />
+          </IconButton>
+        </Tooltip>
         <Typography variant="subtitle2" color="secondary">
           {counter}
         </Typography>
-        <IconButton
-          color="primary"
-          variant="outlined"
-          id={el.plus}
-          onClick={() => dispatch(setCounter(counter + 1))}>
-          <AddCircleOutlineOutlined />
-        </IconButton>
+        <Tooltip
+          title={formatMessage({ id: 'counter.plus' })}
+          aria-label={formatMessage({ id: 'counter.plus' })}>
+          <IconButton
+            color="primary"
+            variant="outlined"
+            id={el.plus}
+            onClick={() => dispatch(setCounter(counter + 1))}>
+            <AddCircleOutlineOutlined />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

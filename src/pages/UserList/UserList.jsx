@@ -26,6 +26,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Tooltip,
 } from '@material-ui/core';
 
 import {
@@ -93,10 +94,14 @@ const UserList = () => {
                   <TableCell size="small">{user.name}</TableCell>
                   <TableCell size="small">{user.email}</TableCell>
                   <Cell size="small">
-                    <IconButton
-                      onClick={() => history.push(MAIN_ROUTES.USER(user.id))}>
-                      <EditOutlined />
-                    </IconButton>
+                    <Tooltip
+                      title={formatMessage({ id: 'users.edit' })}
+                      aria-label={formatMessage({ id: 'users.edit' })}>
+                      <IconButton
+                        onClick={() => history.push(MAIN_ROUTES.USER(user.id))}>
+                        <EditOutlined />
+                      </IconButton>
+                    </Tooltip>
                   </Cell>
                 </TableRow>
               ))}
