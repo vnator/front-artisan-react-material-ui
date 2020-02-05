@@ -3,7 +3,7 @@ import { graphql } from '@apollo/react-hoc';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import { triggerToast } from '../../components/Toast/redux/thunks';
+import { triggerToast } from '../../modules/Toast/redux/thunks';
 import { User as UserComponent } from './User';
 import { injectIntl } from 'react-intl';
 import { USER } from '../../queries/user';
