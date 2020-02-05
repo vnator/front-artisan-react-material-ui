@@ -1,15 +1,8 @@
-@import './theme/normalize.css';
-@import './theme/colors.css';
-@import './theme/measures.css';
-@import './theme/typography.css';
 @import './theme/font-face.css';
-@import './theme/effects.css';
 
 html,
 body {
-  font-family: var(--font-base);
-  color: var(--first-dark);
-  font-size: var(--size-base);
-  font-weight: var(--weight-medium);
+  font-family: 'Roboto', "Helvetica", "Arial", sans-serif;
+  box-sizing: border-box;
   height: 100%;
 }
