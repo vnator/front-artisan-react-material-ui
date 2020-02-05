@@ -14,7 +14,6 @@ import {
 } from '@material-ui/icons';
 
 import { MAIN_ROUTES } from '../../const/routes';
-import { Btn } from '../../components/Btn/Btn';
 import { SORT_FIELD } from '../../const/userListParams';
 import { USER } from '../../queries/user';
 import { usePagination } from './usePagination';
@@ -91,9 +90,9 @@ const UserList = () => {
             {data &&
               data.users.map(user => (
                 <TableRow key={user.id}>
-                  <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <Cell>
+                  <TableCell size="small">{user.name}</TableCell>
+                  <TableCell size="small">{user.email}</TableCell>
+                  <Cell size="small">
                     <IconButton
                       onClick={() => history.push(MAIN_ROUTES.USER(user.id))}>
                       <EditOutlined />
@@ -116,13 +115,16 @@ const UserList = () => {
             </IconButton>
           </div>
 
-          <TableCell>
-            <Btn onClick={() => history.push(MAIN_ROUTES.USER(0))}>
+          <div className={classes.newUser}>
+            <Button
+              size="large"
+              color="primary"
+              onClick={() => history.push(MAIN_ROUTES.USER(0))}>
               {formatMessage({
                 id: 'users.newUser',
               })}
-            </Btn>
-          </TableCell>
+            </Button>
+          </div>
         </FooterRow>
       </Footer>
     </div>

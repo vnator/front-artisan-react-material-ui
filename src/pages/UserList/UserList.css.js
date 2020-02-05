@@ -5,6 +5,9 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   title: {
     marginBottom: spacing(4),
   },
+  newUser: {
+    margin: spacing(2),
+  },
 }));
 
 export { useStyles };

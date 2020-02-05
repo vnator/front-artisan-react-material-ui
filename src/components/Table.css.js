@@ -11,7 +11,6 @@ const TabContainer = styled(TableContainer)(props => ({
   display: 'flex',
   justifyContent: 'center',
   marginTop: props.theme.spacing(4),
-  marginBottom: props.theme.spacing(4),
 }));
 
 const Table = styled(MUITable)(props => ({
