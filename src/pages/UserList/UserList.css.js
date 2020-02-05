@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, spacing }) => ({
   userList: {},
   title: {
-    marginBottom: 40,
+    marginBottom: spacing(4),
   },
 }));
 

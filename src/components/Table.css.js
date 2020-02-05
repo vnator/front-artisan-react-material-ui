@@ -7,26 +7,27 @@ import {
   styled,
 } from '@material-ui/core';
 
-const TabContainer = styled(TableContainer)({
+const TabContainer = styled(TableContainer)(props => ({
   display: 'flex',
   justifyContent: 'center',
-  margin: '40 0',
-});
+  marginTop: props.theme.spacing(4),
+  marginBottom: props.theme.spacing(4),
+}));
 
-const Table = styled(MUITable)({
-  maxWidth: 'calc(100% - 80px)',
-});
+const Table = styled(MUITable)(props => ({
+  maxWidth: `calc(100% - ${props.theme.spacing(20)}px)`,
+}));
 
 const Footer = styled(({ children, ...props }) => (
   <div {...props}>{children}</div>
-))({
+))(props => ({
   width: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'column',
-  paddingBottom: 40,
-});
+  paddingBottom: props.theme.spacing(4),
+}));
 
 const FooterRow = styled(({ children, ...props }) => (
   <div {...props}>{children}</div>
@@ -34,12 +35,12 @@ const FooterRow = styled(({ children, ...props }) => (
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  width: 'calc(100% - 80px)',
+  width: `calc(100% - ${props.theme.spacing(20)}px)`,
   border: `1px solid ${props.theme.palette.primary.main}`,
   borderTop: 0,
 }));
 const Cell = styled(TableCell)(props => ({
-  width: 40,
+  width: props.theme.spacing(4),
   background: props.theme.palette.grey['200'],
 }));
 

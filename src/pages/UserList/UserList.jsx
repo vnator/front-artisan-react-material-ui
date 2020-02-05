@@ -106,7 +106,7 @@ const UserList = () => {
       </TabContainer>
       <Footer>
         <FooterRow>
-          <TableCell>
+          <div>
             <IconButton onClick={prevPage}>
               <ArrowLeft />
             </IconButton>
@@ -114,7 +114,7 @@ const UserList = () => {
             <IconButton onClick={nextPage}>
               <ArrowRight />
             </IconButton>
-          </TableCell>
+          </div>
 
           <TableCell>
             <Btn onClick={() => history.push(MAIN_ROUTES.USER(0))}>

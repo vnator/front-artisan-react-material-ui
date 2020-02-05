@@ -8,7 +8,6 @@ import {
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
-import style from './App.module.css';
 import { theme } from '../../theme';
 import { Counter } from '../../pages/Counter/Counter';
 import { Address } from '../../pages/Address';
@@ -28,10 +27,11 @@ const useStyles = makeStyles(props => ({
     overflow: 'auto',
   },
   container: {
-    margin: '80px 0',
+    marginTop: props.spacing(12),
+    marginBottom: props.spacing(12),
   },
   message: {
-    padding: '30px 0',
+    padding: `${props.spacing(4)}px 0`,
   },
 }));
 
@@ -58,18 +58,13 @@ const App = () => {
                   extern: str => (
                     <Link
                       key={str}
-                      className={style.link}
                       href="https://reactjs.org"
                       target="_blank"
                       rel="noopener noreferrer">
                       {str}
                     </Link>
                   ),
-                  code: str => (
-                    <code key={str} className={style.code}>
-                      {str}
-                    </code>
-                  ),
+                  code: str => <code key={str}>{str}</code>,
                 },
               )}
             </Typography>

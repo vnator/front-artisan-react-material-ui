@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
 
-import { TextField } from '../../components/TextField/TextField';
+import { Button } from '@material-ui/core';
+import { ArrowBack } from '@material-ui/icons';
 
-import style from './User.module.css';
-import { Btn } from '../../components/Btn/Btn';
 import { checkEmail } from '../../utils/validate';
 import { ERROR } from '../../const/errors';
 import { intlShape } from '../../utils/intlShape';
+import { Title } from '../../components/Title.css';
+
+import { UserContainer, Form, Input, BtnBack } from './User.css';
 
 class User extends Component {
   constructor(props) {
@@ -77,15 +79,23 @@ class User extends Component {
     return this.props.data.loading ? (
       'carregando'
     ) : (
-      <div className={style.User}>
-        <h2 className={style.title}>
+      <UserContainer>
+        <BtnBack
+          color="secondary"
+          variant="extended"
+          onClick={this.props.history.goBack}>
+          <ArrowBack />
+          Back to Listage
+        </BtnBack>
+        <Title color="primary" variant="h4">
           {formatMessage({
             id: 'user.title',
           })}
-        </h2>
-        <form className={style.form}>
+        </Title>
+        <Form>
           {Object.entries(this.state).map(([key, val]) => (
-            <TextField
+            <Input
+              variant="outlined"
               key={key}
               name={key}
               value={val}
@@ -96,16 +106,27 @@ class User extends Component {
               })}
               type={this.defineType(key)}
               disabled={key === 'gender'}
+              InputLabelProps={
+                this.defineType(key) === 'date'
+                  ? {
+                      shrink: true,
+                    }
+                  : ''
+              }
             />
           ))}
-
-          <Btn onClick={e => this.submit(e, this.state)}>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            fullWidth
+            onClick={e => this.submit(e, this.state)}>
             {formatMessage({
               id: 'user.submit',
             })}
-          </Btn>
-        </form>
-      </div>
+          </Button>
+        </Form>
+      </UserContainer>
     );
   }
 }
@@ -114,6 +135,9 @@ User.propTypes = {
   mutate: Type.func.isRequired,
   triggerToast: Type.func.isRequired,
   intl: Type.shape(intlShape).isRequired,
+  history: Type.shape({
+    goBack: Type.func,
+  }).isRequired,
   data: Type.shape({
     loading: Type.bool,
     user: Type.objectOf(Type.string),

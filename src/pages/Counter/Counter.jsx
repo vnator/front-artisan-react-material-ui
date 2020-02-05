@@ -14,9 +14,10 @@ import { setCounterOneByOne } from './redux/thunks.js';
 import { el } from './element.selectors';
 import { useIntl } from 'react-intl';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(props => ({
   counter: {
-    margin: '50px 0',
+    marginTop: props.spacing(4),
+    marginBottom: props.spacing(4),
     display: 'inline-flex',
     flexDirection: 'column',
   },
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-});
+}));
 
 const Counter = () => {
   const { formatMessage } = useIntl();
