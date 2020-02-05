@@ -3,10 +3,10 @@ import { createShallow } from '@material-ui/core/test-utils';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import Enzyme, { mount } from 'enzyme';
+import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { spy } from 'sinon';
-
+import { mountWithIntl } from '../../../utils/enzymeHelper';
 import { Counter } from '../Counter';
 import { el } from '../element.selectors';
 
@@ -27,7 +27,7 @@ describe('Counter', () => {
       couter: 0,
     });
 
-    const counter = mount(
+    const counter = mountWithIntl(
       <Provider store={store}>
         <Counter />
       </Provider>,
@@ -45,7 +45,7 @@ describe('Counter', () => {
 
     store.dispatch = spy();
 
-    const counter = mount(
+    const counter = mountWithIntl(
       <Provider store={store}>
         <Counter />
       </Provider>,
@@ -68,7 +68,7 @@ describe('Counter', () => {
 
     store.dispatch = spy();
 
-    const counter = mount(
+    const counter = mountWithIntl(
       <Provider store={store}>
         <Counter />
       </Provider>,
@@ -89,7 +89,7 @@ describe('Counter', () => {
 
     store.dispatch = spy();
 
-    const counter = mount(
+    const counter = mountWithIntl(
       <Provider store={store}>
         <Counter />
       </Provider>,
