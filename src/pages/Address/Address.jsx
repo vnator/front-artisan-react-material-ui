@@ -82,7 +82,7 @@ class Address extends Component {
                         id={el.btnSelectStreet}
                         color="primary"
                         onClick={() => {
-                          this.setState(prev => ({
+                          this.setState((prev) => ({
                             ...prev,
                             selected: key,
                             newAddress: val.street,
@@ -103,12 +103,12 @@ class Address extends Component {
             <Input
               id={el.inputUpdateStreet}
               value={this.state.newAddress}
-              onChange={e => this.setState({ newAddress: e.target.value })}
+              onChange={(e) => this.setState({ newAddress: e.target.value })}
               variant="filled"
               label={
                 this.state.selected
                   ? Object.keys(this.props.address).find(
-                      x => x === this.state.selected,
+                      (x) => x === this.state.selected,
                     )
                   : formatMessage({ id: 'address.street' })
               }
@@ -135,7 +135,7 @@ class Address extends Component {
               placeholder={formatMessage({
                 id: 'address.placeholder.city',
               })}
-              onChange={e => this.setState({ newCity: e.target.value })}
+              onChange={(e) => this.setState({ newCity: e.target.value })}
               inputProps={{ 'aria-label': 'search google maps' }}
             />
             <Button

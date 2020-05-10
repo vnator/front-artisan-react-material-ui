@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { nav } from './types';
 
-const _setNavActive = value => {
+const _setNavActive = (value) => {
   return { payload: value };
 };
 

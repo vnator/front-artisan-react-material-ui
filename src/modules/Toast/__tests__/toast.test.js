@@ -29,7 +29,7 @@ describe('Toast', () => {
     expect(toast).toMatchSnapshot();
   });
 
-  it('auto hide', done => {
+  it('auto hide', (done) => {
     const toast = {
       message: 'any message',
       active: true,

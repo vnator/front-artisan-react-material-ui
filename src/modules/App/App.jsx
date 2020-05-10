@@ -19,7 +19,7 @@ import { Toast } from '../../modules/Toast/Toast';
 import { Nav } from '../Nav/Nav';
 import { Container, Typography, Link, Paper } from '@material-ui/core';
 
-const useStyles = makeStyles(props => ({
+const useStyles = makeStyles((props) => ({
   app: {
     textAlign: 'center',
     background: props.palette.grey['200'],
@@ -55,7 +55,7 @@ const App = () => {
                   id: 'app.paragraph',
                 },
                 {
-                  extern: str => (
+                  extern: (str) => (
                     <Link
                       key={str}
                       href="https://reactjs.org"
@@ -64,7 +64,7 @@ const App = () => {
                       {str}
                     </Link>
                   ),
-                  code: str => <code key={str}>{str}</code>,
+                  code: (str) => <code key={str}>{str}</code>,
                 },
               )}
             </Typography>

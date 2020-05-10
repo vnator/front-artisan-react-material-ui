@@ -21,11 +21,11 @@ const Form = styled(({ children, ...props }) => (
   flexDirection: 'column',
 });
 
-const Input = styled(TextField)(props => ({
+const Input = styled(TextField)((props) => ({
   marginBottom: props.theme.spacing(2),
 }));
 
-const BtnBack = styled(Fab)(props => ({
+const BtnBack = styled(Fab)((props) => ({
   position: 'fixed',
   left: props.theme.spacing(3),
   bottom: props.theme.spacing(3),

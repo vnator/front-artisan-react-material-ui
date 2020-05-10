@@ -4,7 +4,7 @@ import { Snackbar, makeStyles } from '@material-ui/core';
 import { SnackbarContent } from '@material-ui/core';
 import { toggleActive } from './redux/actions';
 
-const useStyle = makeStyles(props => ({
+const useStyle = makeStyles((props) => ({
   toast: {
     background: props.palette.error.main,
     color: props.palette.error.contrastText,
@@ -16,7 +16,7 @@ const useStyle = makeStyles(props => ({
 const Toast = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
-  const { active, message } = useSelector(state => state.toast);
+  const { active, message } = useSelector((state) => state.toast);
 
   useEffect(() => {
     if (active) {

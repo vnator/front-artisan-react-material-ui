@@ -1,3 +1,3 @@
-const isObj = obj => typeof obj === 'object' && !(obj instanceof Array);
+const isObj = (obj) => typeof obj === 'object' && !(obj instanceof Array);
 
 export { isObj };

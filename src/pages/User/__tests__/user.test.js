@@ -44,7 +44,7 @@ describe('User', () => {
 
     const instance = user.instance();
 
-    states.forEach(name => {
+    states.forEach((name) => {
       instance.onChange({ target: { value, name } });
       expect(user.state()[name]).toBe(value);
     });
@@ -126,20 +126,14 @@ describe('User', () => {
 
   it('submit method', () => {
     const user = mount(<User {...mockProps} />);
-    user
-      .find(`#${el.btnSubmit}`)
-      .first()
-      .simulate('click');
+    user.find(`#${el.btnSubmit}`).first().simulate('click');
 
     expect(mockProps.triggerToast.calledOnce).toBeTruthy();
   });
 
   it('goBack', () => {
     const user = mount(<User {...mockProps} />);
-    user
-      .find(`#${el.btnGoBack}`)
-      .first()
-      .simulate('click');
+    user.find(`#${el.btnGoBack}`).first().simulate('click');
 
     expect(mockProps.history.goBack.calledOnce).toBeTruthy();
   });

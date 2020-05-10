@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const navTo = (push, after) => to => {
+const navTo = (push, after) => (to) => {
   push(to);
   after();
 };

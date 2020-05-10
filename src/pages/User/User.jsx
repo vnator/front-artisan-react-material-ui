@@ -21,7 +21,7 @@ class User extends Component {
     };
   }
 
-  _updateUser = user =>
+  _updateUser = (user) =>
     user
       ? {
           name: user.name,
@@ -42,13 +42,13 @@ class User extends Component {
     }
   }
 
-  onChange = e => {
+  onChange = (e) => {
     const { name, value } = e.target;
 
     this.setState({ [name]: value });
   };
 
-  defineType = name => {
+  defineType = (name) => {
     if (name === 'dateOfBirth') {
       return 'date';
     } else if (name === 'email') {
@@ -125,7 +125,7 @@ class User extends Component {
             color="primary"
             size="large"
             fullWidth
-            onClick={e => this.submit(e, this.state)}>
+            onClick={(e) => this.submit(e, this.state)}>
             {formatMessage({
               id: 'user.submit',
             })}

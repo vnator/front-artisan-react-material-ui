@@ -77,7 +77,7 @@ const UserList = () => {
         <Table>
           <TableHead>
             <TableRow>
-              {Object.values(SORT_FIELD).map(val => (
+              {Object.values(SORT_FIELD).map((val) => (
                 <HeadCell
                   field={val}
                   sortField={pag.params.sortField}
@@ -89,7 +89,7 @@ const UserList = () => {
           </TableHead>
           <TableBody>
             {data &&
-              data.users.map(user => (
+              data.users.map((user) => (
                 <TableRow key={user.id}>
                   <TableCell size="small">{user.name}</TableCell>
                   <TableCell size="small">{user.email}</TableCell>

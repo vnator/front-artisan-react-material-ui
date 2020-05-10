@@ -51,10 +51,7 @@ describe('Counter', () => {
       </Provider>,
     );
 
-    counter
-      .find(`#${el.plus}`)
-      .first()
-      .simulate('click');
+    counter.find(`#${el.plus}`).first().simulate('click');
 
     expect(store.dispatch.args[0][0].payload).toBe(initialState + 1);
   });
@@ -74,10 +71,7 @@ describe('Counter', () => {
       </Provider>,
     );
 
-    counter
-      .find(`#${el.minus}`)
-      .first()
-      .simulate('click');
+    counter.find(`#${el.minus}`).first().simulate('click');
 
     expect(store.dispatch.args[0][0].payload).toBe(initialState - 1);
   });
@@ -95,10 +89,7 @@ describe('Counter', () => {
       </Provider>,
     );
 
-    counter
-      .find(`#${el.oneByOne}`)
-      .first()
-      .simulate('click');
+    counter.find(`#${el.oneByOne}`).first().simulate('click');
 
     expect(store.dispatch.calledOnce).toBeTruthy();
   });
